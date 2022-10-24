@@ -1,0 +1,27 @@
+Understand the arithmetic instructions Math2.a chapter 4 of the book.
+
+#----------------- start cut ---------------------------------------------
+
+   la $a0, ans
+        li $v0, 4                       # Print the value
+        syscall
+
+        lw $t1, X                       # Load word = 7 i.e, the value of x
+
+        mul $t4, $t1, $t1               # t4= multiply the value of X by itself or (x-squared)
+        mul $t4, $t4, 5                 # t4= 5x**2 ( 5*x-squared)
+        sub $t4, $t4, 3                 # Substract the value of 3 in 5x**2
+
+        move $a0, $t4                   
+
+        li $v0, 1                       # Print the integer
+        syscall
+
+        la $a0, endl
+        li $v0, 4
+        syscall
+
+        li $v0, 10                      # Exit program service
+        syscall                         # au revoir
+
+#----------------- end cut ---------------------------------------------

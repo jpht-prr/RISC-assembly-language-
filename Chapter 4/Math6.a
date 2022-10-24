@@ -1,5 +1,7 @@
 Understand the arithmetic instructions Math2.a chapter 4 of the book.
 
+#----------------- start cut ---------------------------------------------
+
 la $a0, ans
         li $v0, 4                       # Print the value
         syscall
@@ -25,4 +27,6 @@ segment
         li $v0, 10                      # exit progam service
         syscall                         # au revoir
 
+
+#----------------- end cut ---------------------------------------------
 

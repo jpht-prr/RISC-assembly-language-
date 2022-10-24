@@ -1,3 +1,4 @@
+Understand the arithmetic instructions Math2.a chapter 4 of the book.
 
 la $a0, ans
         li $v0, 4                       # Print the value

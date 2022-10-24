@@ -1,0 +1,51 @@
+Understand the loop. Chapter 5 in the textbook.
+
+## Question:
+## Swap each pair of elements in the string "chararray"
+## and print the resulting string.
+## There will always be an evennumber of charcters.
+##
+## Output format must be:
+## "badcfe"
+
+
+
+    la $t2, chararray               # $t2 prints to the chararray
+                li $t1, 0                       # $t1 holds the count
+
+loop:           lb $t0, ($t2)                   # get a byte from the chararray
+                beqz $t0, endChararray          # zero means end of chararray, or if chararray
+== 0, then it's done
+                beqz $t1, nota                  # current flag = 0 i.e.convert to uppercase
+                bnez $t1, nota1                 # current flag = 1 i.e convert to lowerscase
+#### That's odd, the problem doesn't ask you to convert between upper
+and lower case.
+                j loop                          # go round the loop again
+
+
+nota:           add $t3, $t0, 1                 # convert the current chararray to uppercase
+##### to do this you would have to or with 0x20 as 'A' = 0x41 and 'a' = 0x61
+                sb $t3, ($t2)                   # store the converted chararray to the original chararray
+                                                # (write the value from the register to the to the string in memory)
+                li $t1, 1                       # flip the flag
+                add $t2, $t2, 1                 # move pointer one character
+                j loop                          # go round the loop again
+
+nota1:          add $t3, $t0, -1                # convert the current chararray to lowercase
+                sb $t3, ($t2)                   # store the converted chararray to the original chararray
+                                                # (write the value from the register to the new string memory)
+                li $t1, 0                       # flip the flag
+#####this comment is a total mystery.
+                add $t2, $t2, 1                 # move pointer one character
+                j loop                          # go round the loop again
+
+endChararray:   la $a0, chararray
+                li $v0, 4
+                syscall                         # prinnt
+
+                la $a0, endl                    # system call to print
+                li $v0, 4                       # out a new line
+                syscall
+
+                li $v0, 10                      # exit program service
+                syscall                         # au revoir

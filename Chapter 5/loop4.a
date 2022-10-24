@@ -8,7 +8,7 @@ Understand the loop. Chapter 5 in the textbook.
 ## Output format must be:
 ## "badcfe"
 
-
+#----------------- start cut ---------------------------------------------
 
     la $t2, chararray               # $t2 prints to the chararray
                 li $t1, 0                       # $t1 holds the count
@@ -49,3 +49,6 @@ endChararray:   la $a0, chararray
 
                 li $v0, 10                      # exit program service
                 syscall                         # au revoir
+                
+#----------------- end cut ---------------------------------------------                
+                

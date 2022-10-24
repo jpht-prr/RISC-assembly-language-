@@ -1,1 +1,27 @@
 
+la $a0, ans
+        li $v0, 4                       # Print the value
+        syscall
+
+        lw $t1, x                       # load word = 9, i.e load the value of x from data
+        lw $t2, dy                      # load word = 10, i.e load the value of dy from data segment
+        lw $t3, dx                      # load word = 6, i.e load the value of dx from data segment
+        lw $t0, intercept               # load word = 2, i.e load the value of  dx from date
+segment
+
+        mul $t4, $t2, $t1               # multiply the (dy) by the value of x -- t4= dy*x
+        div $t4, $t4, $t3               # divide (dy * x) / dx -- t4= (dy*x) / dx
+        add $t4, $t4, $t0               # add the value in (slope*x) or --  t4=(dy * x)/dx + (- 2)
+
+        move $a0, $t4                   
+        li $v0, 1                       # print the integer
+        syscall
+
+        la $a0, endl
+        li $v0, 4
+        syscall
+
+        li $v0, 10                      # exit progam service
+        syscall                         # au revoir
+
+
